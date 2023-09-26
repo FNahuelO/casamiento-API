@@ -10,11 +10,5 @@
       "src": "/(.*)",
       "dest": "index.js"
     }
-  ],
-  "build": {
-    "env": {
-      "CI": "true"
-    },
-    "command": "npm install"
-  }
+  ]
 }
