@@ -43,4 +43,6 @@ const configDb =
         password: "admin",
       };
 
-export const sequelize = new Sequelize(configDb);
+const sequelize = new Sequelize(configDb);
+
+export default sequelize;

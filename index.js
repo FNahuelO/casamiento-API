@@ -1,4 +1,4 @@
-import { sequelize } from "./src/config/sequelize.js";
+import sequelize from "./src/config/sequelize.js";
 import { server } from "./src/app.js";
 
 sequelize.sync({ force: false }).then(() => {

@@ -1,6 +1,6 @@
 import InvitadoModel from "../models/Invitado.js";
 import BebidaModel from "../models/Bebida.js";
-import { sequelize } from "../config/sequelize.js";
+import sequelize from "../config/sequelize.js";
 
 const modelDefiners = [InvitadoModel, BebidaModel];
 

@@ -1,5 +1,5 @@
 import { STRING, UUID, UUIDV4 } from "sequelize";
-import { sequelize } from "../config/sequelize.js";
+import sequelize from "../config/sequelize.js";
 
 const Bebida = sequelize.define("Bebida", {
   id: {

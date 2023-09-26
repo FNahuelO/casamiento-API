@@ -1,6 +1,5 @@
 import { STRING, UUID, ARRAY, BOOLEAN, UUIDV4 } from "sequelize";
-import { sequelize } from "../config/sequelize.js";
-//import Bebida from "./Bebida.js"; // Asegúrate de importar el modelo de Bebida
+import sequelize from "../config/sequelize.js";
 
 const Invitado = sequelize.define("Invitado", {
   id: {
@@ -23,9 +22,5 @@ const Invitado = sequelize.define("Invitado", {
     defaultValue: false, // Valor por defecto: false
   },
 });
-/* Invitado?.belongsToMany(Bebida, {
-  through: "InvitadoBebida",
-  foreignKey: "id_invitado",
-}); */
 
 export default Invitado;
