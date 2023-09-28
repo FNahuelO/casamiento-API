@@ -13,7 +13,7 @@ const arrayBebidas = [
   "Vino blanco",
   "Vino espumante",
   "Frizze",
-  "No tomo"
+  "No tomo",
 ];
 
 export const getInvitados = async (req, res) => {
@@ -48,9 +48,13 @@ export const getBebidas = async (req, res) => {
 
       bebidas = await Bebida.findAll();
     }
+    const newBebidas = bebidas.map((item) => ({
+      id: item.id,
+      name: item.name,
+    }));
 
     res.status(200).json({
-      data: bebidas,
+      data: newBebidas,
       success: true,
       message: "Bebidas creados exitosamente.",
     });
@@ -60,22 +64,27 @@ export const getBebidas = async (req, res) => {
 };
 
 export const postInvitation = async (req, res) => {
-  const { music, bebida, confirm, id } = req.body[0];
+  const { id, assist } = req.body?.invitado;
+  const { musica, bebidas } = req.body;
+
   try {
     const findInvitado = await Invitado.findByPk(id);
-
-    findInvitado.music = music;
-    findInvitado.bebida = bebida;
-    findInvitado.confirm = confirm;
+    if (assist) {
+      console.log(req.body);
+      findInvitado.music = musica;
+      findInvitado.bebida = bebidas;
+    }
+    findInvitado.assist = assist;
 
     await findInvitado.save();
 
     return res.status(200).json({
-      data: invitadoEncontrado,
+      data: null,
       success: true,
       message: "Invitado actualizado exitosamente.",
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ error: "Error en el servidor." });
   }
 };
