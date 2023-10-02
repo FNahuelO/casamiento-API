@@ -1,9 +1,5 @@
-import path from "path";
-import fs from "fs";
 import { Invitado, Bebida } from "../models/index.js";
-import { fileURLToPath } from "url";
 import data from "../config/data.js";
-import { calendar } from "googleapis/build/src/apis/calendar/index.js";
 
 const arrayBebidas = [
   "Fernet",
@@ -22,7 +18,7 @@ export const getInvitados = async (req, res) => {
     if (invitados.length === 0) {
       await Invitado.bulkCreate(
         data.map((el) => ({
-          name: el.nombre,
+          name: el.name,
           music: null,
           assist: null,
         }))
